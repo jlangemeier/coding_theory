@@ -48,9 +48,7 @@ class HammingCode:
         return np.dot(self.decoding, data) % 2
 
     def parity_correction(self, data, syndrome):
-        print(''.join(map(str, syndrome)))
         error_loc = int(''.join(map(str, syndrome)), 2) - 1
-        print(error_loc)
         error_val = np.eye(1, self.channel_size, error_loc, dtype='int8')[0]
         return (data + error_val) % 2
 
